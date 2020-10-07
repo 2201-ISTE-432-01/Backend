@@ -1,9 +1,7 @@
 const { Pool}  = require('pg');
 
-DATABASE_URL = 'postgres://admin:letmein@localhost:5433/spotify';
-
 const pool = new Pool({
-  connectionString: DATABASE_URL,
+  connectionString: process.env.APP_POSTGRES_STRING,
 });
 
 exports.query = function (text) {
