@@ -1,9 +1,13 @@
 const express = require('express')
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    console.log(req.isAuthenticated)
-    res.send({ message: 'Hello World', spotifyAuthedUser: req.user })
+const { ensureAuthenticated } = require('../middleware/authentication');
+
+router.get('/', ensureAuthenticated, (req, res) => {
+
+    res.render('index', {
+        user: req.user.displayName
+    })
 })
 
 module.exports = router;
