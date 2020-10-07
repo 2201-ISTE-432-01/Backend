@@ -1,12 +1,12 @@
 const { Pool}  = require('pg');
 
-DATABASE_URL = 'postgres://user:password@localhost:5432/spotify';
+DATABASE_URL = 'postgres://admin:letmein@localhost:5433/spotify';
 
 const pool = new Pool({
   connectionString: DATABASE_URL,
 });
 
-function query(text) {
+exports.query = function (text) {
   return new Promise((resolve, reject) => {
     pool
       .query(text)
@@ -17,8 +17,4 @@ function query(text) {
         reject(err);
       });
   });
-}
-
-module.exports = {
-	query
 }
