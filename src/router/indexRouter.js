@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send({ message: 'Hello World!' })
+    console.log(req.isAuthenticated)
+    res.send({ message: 'Hello World', spotifyAuthedUser: req.user })
 })
 
 module.exports = router;
