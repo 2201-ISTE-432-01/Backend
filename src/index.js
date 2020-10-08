@@ -17,6 +17,8 @@ app.use('/', require('./router/indexRouter'))
 app.use('/auth', require('./router/authRouter'))
 app.use('/users', require('./router/userRouter'))
 
+app.use(express.static('public'))
+
 app.set('view engine', 'pug');
 
 app.listen(process.env.APP_PORT, () => {
