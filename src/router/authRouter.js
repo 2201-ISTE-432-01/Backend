@@ -10,7 +10,7 @@ router.get('/spotify', passport.authenticate('spotify', {
 
 router.get('/spotify/callback',
     passport.authenticate('spotify', {
-
+        scope: ['user-read-private', 'playlist-read-private']
     }),
     (req, res) => {
         res.redirect('/')

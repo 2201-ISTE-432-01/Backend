@@ -3,3 +3,14 @@ extends layout/main
 block main
     h1 Hello, #{user}
     img(src='/150.png')
+
+    if playlists
+        h1 Playlists
+        ul
+            each val in playlists
+                li
+                    img(src=val.images[0].url, width='50px')
+                    = val.name
+
+    if error
+        h1 Uh oh, something went wrong.

@@ -25,7 +25,7 @@ passport.use(
         },
         function (accessToken, refreshToken, expires_in, profile, done) {
             process.nextTick(() => {
-                return done(null, profile);
+                return done(null, { ...profile, ...{ accessToken: accessToken } });
             });
         }
     )
