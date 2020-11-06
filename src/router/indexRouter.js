@@ -6,6 +6,7 @@ const playlist = require('../model/spotify/playlist')
 const { ensureAuthenticated } = require('../middleware/authentication');
 
 router.get('/', ensureAuthenticated, async (req, res) => {
+    console.log(req.user)
 
     playlist.getMine(req.user)
         .then(response => {
