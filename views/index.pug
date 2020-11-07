@@ -1,5 +1,41 @@
 extends layout/main
-
 block main
-    h1 Hello, #{user}
-    img(src='/150.png')
+
+	.topnav
+	
+		form(action='#' class='myform')
+
+			label(for='quantity') Tempo/BPM:
+
+			input#quantity(type='number' class='tempo' name='quantity' min='1' max='1000' value='125')
+
+			
+		#mainDiv
+			#artistDiv
+				#myDIV.header
+					h2(style='margin:5px') Pick your Artists
+					input#myInput(type='text' style='color=#FFFF00' placeholder='Artist...')
+					span.addBtn(onclick='newElement()') Add
+				ul#myUL
+					li Green Day
+					li Weezer
+					li Aerosmith
+					li Third Eye Blind
+					li Paramore 
+					li Blink-182
+			
+			#genreDiv
+				#myDIV.header
+					h2(style='margin:5px') Pick your Genres
+					input#myInput2(type='text' placeholder='Genre...')
+					span.addBtn(onclick='newElement2()') Add
+				ul#myUL2
+					li Rock
+					li Alerternative
+					li Indie
+					
+		input.btn.waves-effect.waves-light(id="generatePL" type='submit' value='Generate Playlist')
+	
+
+
+
