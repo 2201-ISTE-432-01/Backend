@@ -1,8 +1,9 @@
-const playlist = require('../model/spotify/playlist')
+import {getMine} from "../model/spotify/playlist";
 
-exports.index = async function(req, res) {
-    playlist.getMine(req.user)
-        .then(response => {
+
+export function index(req: any, res: any) {
+    getMine(req.user)
+        .then((response: any) => {
             console.log(response.data.items[0].images)
 
             res.render('index', {
@@ -10,7 +11,7 @@ exports.index = async function(req, res) {
                 playlists: response.data.items
             })
         })
-        .catch(err => {
+        .catch((err: any) => {
             console.log(err)
 
             res.render('index', {

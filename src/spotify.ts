@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-exports.get = function(path, accessToken) {
+export function get(path: string, accessToken: string) {
     return axios.get(path, {
         baseURL: 'https://api.spotify.com/v1',
         headers: {
@@ -9,7 +9,7 @@ exports.get = function(path, accessToken) {
     })
 }
 
-exports.post = function(path, accessToken, data) {
+export function post(path: string, accessToken: string, data: object) {
     return axios.post(path, {
         baseURL: 'https://api.spotify.com/v1',
         headers: {
@@ -19,7 +19,7 @@ exports.post = function(path, accessToken, data) {
     })
 }
 
-exports.put = function(path, accessToken, data) {
+export function put(path: string, accessToken: string, data: object) {
     return axios.put(path, {
         baseURL: 'https://api.spotify.com/v1',
         headers: {

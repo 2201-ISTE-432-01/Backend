@@ -1,11 +1,10 @@
-const express = require('express')
-const router = express.Router();
+import express from "express";
+import passport from "../passport";
 
-const passport = require('../passport')
+const router = express.Router();
 
 router.get('/spotify', passport.authenticate('spotify', {
     scope: ['user-read-email', 'user-read-private'],
-    showDialog: true,
 }))
 
 router.get('/spotify/callback',
@@ -16,4 +15,4 @@ router.get('/spotify/callback',
         res.redirect('/')
     })
 
-module.exports = router;
+export default router
