@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS "user"(
 );
 
 LOCK TABLES `user` WRITE;
-INSERT INTO `user` VALUES ('spotify:user:6ifle3fj0t8can7zmwepm7tow', 1,'Eyob');
+INSERT INTO `user` VALUES ('spotify:user:6ifle3fj0t8can7zmwepm7tow','Eyob');
 UNLOCK TABLES;
 
 CREATE TABLE IF NOT EXISTS artist_track(
