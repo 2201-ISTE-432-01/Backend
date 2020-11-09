@@ -5,8 +5,7 @@ const database = require ('../database');
 //////////
 
 exports.create = async function(data) {
-    // TODO use data object correctly
-    const query = `INSERT INTO playlist VALUES (${data});`;
+    const query = `INSERT INTO playlist (playlist_uri,name,description,energy,tempo) VALUES ('${data.playlist_uri}', '${data.name}', '${data.description}', '${data.energy}', '${data.tempo}');`;
     return database.query(query);
 }
 
@@ -21,8 +20,7 @@ exports.readOne = async function(uri) {
 }
 
 exports.updateOne = async function(uri, data) {
-    // TODO use objects correctly
-    const query = `UPDATE playlist SET playlist_uri = '${data}', name = '${data}', description = '${data}', energy = '${data}', tempo = '${data}' WHERE playlist_uri = '${uri}';`;
+    const query = `UPDATE playlist SET playlist_uri = '${data.playlist_uri}', name = '${data.name}', description = '${data.description}', energy = '${data.energy}', tempo = '${data.energy}' WHERE playlist_uri = '${uri}';`;
     return database.query(query);
 }
 

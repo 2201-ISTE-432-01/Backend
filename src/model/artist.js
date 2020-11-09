@@ -5,8 +5,7 @@ const database = require ('../database');
 //////////
 
 exports.create = async function(data) {
-    // TODO Not sure how this should work
-    const query = `INSERT INTO artist (artist_uri,artist_name,popularity) values (${data});`;
+    const query = `INSERT INTO artist (artist_uri,artist_name,popularity) values ('${data.artist_uri}', '${data.artist_name}', '${data.popularity}');`;
     return database.query(query);
 }
 
@@ -21,13 +20,11 @@ exports.readOne = async function(uri) {
 }
 
 exports.updateOne = async function(uri, data) {
-    // TODO not sure how to use the data object
-    const query = `UPDATE artist SET artist_uri = '${data}',artist_name = '${data}',popularity = '${data}' WHERE artist_uri = '${uri}';`;
+    const query = `UPDATE artist SET artist_uri = '${data.artist_uri}',artist_name = '${data.artist_name}',popularity = '${data.popularity}' WHERE artist_uri = '${uri}';`;
     return database.query(query);
 }
 
 exports.destroyOne = async function(uri) {
-    // TODO Avery
     const query = `DELETE FROM artist WHERE artist_uri = '${uri}';`;
     return database.query(query);
 }
