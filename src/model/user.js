@@ -9,12 +9,12 @@ exports.create = async function(data) {
 }
 
 exports.readAll = async function () {
-	const query = 'select * FROM user';
+	const query = 'select * FROM user;';
 	return database.query(query);
 }
 
 exports.readOne = async function(uri) {
-	const query = `SELECT * FROM user WHERE user_uri='${uri}'`
+	const query = `SELECT * FROM user WHERE user_uri='${uri}';`
 	return database.query(query)
 }
 
