@@ -24,7 +24,7 @@ UNLOCK TABLES;
 
 CREATE TABLE IF NOT EXISTS playlist(
     playlist_uri varchar(60) NOT NULL,
-    track_uri varchar(60) NOT NULL,
+    user_uri varchar(60) NOT NULL,
     name varchar(60),
     description varchar(250),
     energy numeric(10,0),
