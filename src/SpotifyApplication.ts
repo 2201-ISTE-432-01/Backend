@@ -2,6 +2,7 @@ import Database from "./database/Database";
 import PostgresDatabase from "./database/PostgresDatabase";
 import AppFactory from "./AppFactory";
 import {Express} from "express";
+import JestDatabase from "./database/JestDatabase";
 
 export default class SpotifyApplication {
 
@@ -12,7 +13,13 @@ export default class SpotifyApplication {
 
 	private constructor() {
 		this.app = AppFactory.createApp()
-		this.db = new PostgresDatabase()
+
+		if (process.env.NODE_ENV === 'TEST') {
+			console.log('test env')
+			this.db = new JestDatabase()
+		} else {
+			this.db = new PostgresDatabase()
+		}
 	}
 
 	public static getInstance(): SpotifyApplication {

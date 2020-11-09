@@ -1,6 +1,7 @@
 import { Pool } from 'pg'
+import Database from "./Database";
 
-export default class PostgresDatabase {
+export default class PostgresDatabase implements Database {
 
     private pool: Pool;
 
