@@ -1,4 +1,4 @@
-exports.ensureAuthenticated = function (req, res, next) {
+export function ensureAuthenticated (req: any, res: any, next: any) {
     if (req.isAuthenticated()) {
         return next();
     }
