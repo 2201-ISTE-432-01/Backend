@@ -11,7 +11,7 @@ export default class PostgresDatabase implements Database {
         })
     }
 
-    query(query: string): Promise<any> {
+    async query(query: string): Promise<any> {
         return this.pool.query(query)
     }
 }

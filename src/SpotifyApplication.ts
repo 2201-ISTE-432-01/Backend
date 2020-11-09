@@ -15,7 +15,6 @@ export default class SpotifyApplication {
 		this.app = AppFactory.createApp()
 
 		if (process.env.NODE_ENV === 'TEST') {
-			console.log('test env')
 			this.db = new JestDatabase()
 		} else {
 			this.db = new PostgresDatabase()
@@ -38,5 +37,9 @@ export default class SpotifyApplication {
 
 	public getDatabase(): Database {
 		return this.db
+	}
+
+	public getApp(): Express {
+		return this.app
 	}
 }

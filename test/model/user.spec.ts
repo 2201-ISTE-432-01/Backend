@@ -6,14 +6,16 @@ describe('User', () => {
 
     const database = SpotifyApplication.getInstance().getDatabase() as JestDatabase
 
-    it('Gets all users', async () => {
+    it('Gets all users', async (done) => {
         await User.readAll()
         expect(database._query).toBeCalled()
+        done()
     })
 
-    it('Gets one user', async () => {
+    it('Gets one user', async (done) => {
         await User.readOne('uri')
         expect(database._query).toBeCalled()
+        done()
     })
 
 })
