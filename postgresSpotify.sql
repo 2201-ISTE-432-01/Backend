@@ -23,11 +23,17 @@ INSERT INTO `gener` VALUES (1,'Pop'),(2,'Rap'),(3,'Hip-Hop');
 UNLOCK TABLES;
 
 CREATE TABLE IF NOT EXISTS playlist(
-    playlist_uri varchar(60) NOT NULL PRIMARY KEY,
+    playlist_uri varchar(60) NOT NULL,
+    track_uri varchar(60) NOT NULL,
     name varchar(60),
     description varchar(250),
     energy numeric(10,0),
-    tempo numeric(10,0)
+    tempo numeric(10,0),
+    CONSTRAINT pk_playlist PRIMARY KEY (user_uri, playlist_uri),
+    CONSTRAINT fk_user_playlist FOREIGN KEY (user_uri)
+        REFERENCES user (user_uri) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
 );
 
 LOCK TABLES `playlist` WRITE;
