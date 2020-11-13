@@ -24,7 +24,7 @@ and then running the app with the following systemd service:
 
 ```systemd
 [Unit]
-Description=Logbox Bot
+Description=Spotify app
 
 [Service]
 ExecStart=/usr/bin/npm run start
