@@ -30,8 +30,8 @@ export default class SpotifyApplication {
 	}
 
 	public start() {
-		this.app.listen(process.env.APP_PORT, () => {
-			console.log(`Server listening on port ${process.env.APP_PORT}`);
+		this.app.listen(process.env.APP_PORT || process.env.PORT, () => {
+			console.log(`Server listening on port ${process.env.APP_PORT || process.env.PORT}`);
 		})
 	}
 
