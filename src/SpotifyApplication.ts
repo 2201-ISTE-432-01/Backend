@@ -30,8 +30,11 @@ export default class SpotifyApplication {
 	}
 
 	public start() {
-		this.app.listen(process.env.APP_PORT || process.env.PORT, () => {
-			console.log(`Server listening on port ${process.env.APP_PORT || process.env.PORT}`);
+		// default to heroku port, fall back to .env port
+		const port = process.env.PORT ? process.env.PORT : process.env.APP_PORT
+
+		this.app.listen(port, () => {
+			console.log(`Server listening on port ${port}`);
 		})
 	}
 
