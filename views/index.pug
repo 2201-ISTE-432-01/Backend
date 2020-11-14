@@ -1,14 +1,53 @@
 extends layout/main
 block main
 
-	.topnav
+	script.
+		function validatePreferences(){
+			"use strict";
+			var tempo_big_enough = (parseInt(document.getElementById('quantity').value) >= 50);
+			var tempo_small_enough = (parseInt(document.getElementById('quantity').value) <= 250);
+			var tempoValid = tempo_big_enough && tempo_small_enough
+			if(!tempo_big_enough) {
+				alert('tempo is not fast enough')
+				return false;	
+			}
+			if(!tempo_small_enough){
+				alert('tempo is too fast');
+				return false;
+			}
+			
+			var artists = document.getElementById('myUL').getElementsByTagName("li");
+			if(artists.length < 1) {
+				alert('you must input an artist')
+			}
+			var i;
+			for (i = 0; i < artists.length; i++) {
+				artists[i].style.backgroundColor = "red";
+				//- remove <span class="close">×</span> from the list item
+				var artist = artists[i].innerHTML.slice(0, -28) 
+				console.log(artist)
+			}
+			var genres = document.getElementById('myUL2').getElementsByTagName("li");
+			if(genres.length < 1) {
+				alert('you must input an genre')
+			}
+			var j;
+			for (j = 0; j < genres.length; j++) {
+				genres[j].style.backgroundColor = "red";
+				//- remove <span class="close">×</span> from the list item
+				var genre = genres[j].innerHTML.slice(0, -28) 
+				console.log(genre)
+			}
 
-		form(action='#' class='myform')
+			return true;
+		}
 
-			label(for='quantity') Tempo/BPM:
+	form(onsubmit='validatePreferences()' method='GET' action="/results" class='topnav')
+
+		.myform
+			label(for='quantity') Tempo/BPM:<br>(Number between 50 and 250)
 
 			input#quantity(type='number' class='tempo' name='quantity' min='1' max='1000' value='125')
-
 
 		#mainDiv
 			#artistDiv

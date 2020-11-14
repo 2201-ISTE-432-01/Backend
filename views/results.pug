@@ -1,0 +1,11 @@
+extends layout/main
+block main
+
+	h1 Song List: 
+	h4 (We will soon have a link to a spotify playlist here as well)
+	p As of right now, we have this hard coded to specific artists. We have a plan to make it based off of the user inputs. 
+
+	each val in recommendations.data.tracks
+		
+		p #{val.name}
+		p #{val.href}

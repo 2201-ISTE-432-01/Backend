@@ -12,4 +12,14 @@ export function create(user: any, data: any) {
     return post(`/users/${user.id}/playlists`, user.accessToken, data)
 }
 
+// https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/
+export function getRecommendations(user: any, data: any) {
+    return get('/recommendations', user.accessToken, data)
+}
+
+// https://developer.spotify.com/documentation/web-api/reference/search/search/
+export function search(user: any, data: any) {
+    return get('/search', user.accessToken, data)
+}
+
 // TODO: Any endpoints we want to use
