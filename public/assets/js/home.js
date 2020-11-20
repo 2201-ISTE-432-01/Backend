@@ -103,8 +103,10 @@ function addGenre() {
 
 window.addEventListener('load', () => {
     // load a list of genres from the backend, populate and setup our select.
+	$('#genreInput').append(`<option value="" disabled selected>Genre...</option>`)
     getGenres((genres) => {
         genres.forEach(genre => {
+			//$('#genreInput').attr('placeholder', 'Genre...');
             $('#genreInput').append(`<option>${genre}</option>`)
         })
 
