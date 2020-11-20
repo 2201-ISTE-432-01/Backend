@@ -22,4 +22,9 @@ export function search(user: any, data: any) {
     return get('/search', user.accessToken, data)
 }
 
+// https://developer.spotify.com/console/get-available-genre-seeds/
+export function genreSeeds(user: any) {
+    return get('/recommendations/available-genre-seeds', user.accessToken)
+}
+
 // TODO: Any endpoints we want to use

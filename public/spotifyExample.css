@@ -1,9 +1,9 @@
 
 #mainDiv {
-	
+
 	display: flex;
 	justify-content: center;
-	
+
 }
 #artistDiv, #genreDiv {
 	margin: 10px;
@@ -119,7 +119,7 @@ input {
 
 .topnav {
 	clear: both;
-	
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

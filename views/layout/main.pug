@@ -9,8 +9,9 @@ html
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+        link(rel='stylesheet', href='/assets/css/toasts.css')
         link(rel='stylesheet', href='./spotifyExample.css')
-		
+
         block head
     body
         include _header
@@ -21,7 +22,9 @@ html
         footer
             block footer
     script(type='text/javascript', src='https://code.jquery.com/jquery-3.2.1.min.js')
-    script(type='text/javascript', src='./spotifyjs.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+
+    script(type='text/javascript', src='/assets/js/index.js')
+    script(type='text/javascript', src='/assets/js/ajax.js')
 
     block script

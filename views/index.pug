@@ -1,46 +1,7 @@
 extends layout/main
 block main
 
-	script.
-		function validatePreferences(){
-			"use strict";
-			var tempo_big_enough = (parseInt(document.getElementById('quantity').value) >= 50);
-			var tempo_small_enough = (parseInt(document.getElementById('quantity').value) <= 250);
-			var tempoValid = tempo_big_enough && tempo_small_enough
-			if(!tempo_big_enough) {
-				alert('tempo is not fast enough')
-				return false;	
-			}
-			if(!tempo_small_enough){
-				alert('tempo is too fast');
-				return false;
-			}
-			
-			var artists = document.getElementById('myUL').getElementsByTagName("li");
-			if(artists.length < 1) {
-				alert('you must input an artist')
-			}
-			var i;
-			for (i = 0; i < artists.length; i++) {
-				artists[i].style.backgroundColor = "red";
-				//- remove <span class="close">×</span> from the list item
-				var artist = artists[i].innerHTML.slice(0, -28) 
-				console.log(artist)
-			}
-			var genres = document.getElementById('myUL2').getElementsByTagName("li");
-			if(genres.length < 1) {
-				alert('you must input an genre')
-			}
-			var j;
-			for (j = 0; j < genres.length; j++) {
-				genres[j].style.backgroundColor = "red";
-				//- remove <span class="close">×</span> from the list item
-				var genre = genres[j].innerHTML.slice(0, -28) 
-				console.log(genre)
-			}
-
-			return true;
-		}
+	script(type='text/javascript', src='/assets/js/home.js')
 
 	form(onsubmit='validatePreferences()' method='GET' action="/results" class='topnav')
 
@@ -51,27 +12,20 @@ block main
 
 		#mainDiv
 			#artistDiv
-				#myDIV.header
+				.header
 					h2(style='margin:5px') Pick your Artists
-					input#myInput(type='text' style='color=#FFFF00' placeholder='Artist...')
-					span.addBtn(onclick='newElement()') Add
-				ul#myUL
-					li Green Day
-					li Weezer
-					li Aerosmith
-					li Third Eye Blind
-					li Paramore
-					li Blink-182
+					input#artistInput(type='text' style='color=#FFFF00' placeholder='Artist...')
+					span.addBtn(onclick='addArtist()') Add
+				ul#artistList
 
 			#genreDiv
-				#myDIV.header
+				.header
 					h2(style='margin:5px') Pick your Genres
-					input#myInput2(type='text' placeholder='Genre...')
-					span.addBtn(onclick='newElement2()') Add
-				ul#myUL2
-					li Rock
-					li Alerternative
-					li Indie
+					.input-field
+						select#genreInput
+
+					span.addBtn(onclick='addGenre()') Add
+				ul#genreList
 
 		input.btn.waves-effect.waves-light(id="generatePL" type='submit' value='Generate Playlist')
 

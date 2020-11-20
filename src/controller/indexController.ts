@@ -47,26 +47,3 @@ export async function results(req: any, res: any) {
             res.send(500)
         })
 }
-
-export async function searchArtist(req: any, res: any) {
-    const { name } = req.query
-
-    if (!name) {
-        res.send(400)
-        return;
-    }
-
-    search(req.user, {
-        query: name,
-        type: 'artist'
-    })
-
-        .then((results: any) => {
-            res.send(results.data)
-        })
-
-        .catch((err: any) => {
-            console.log(err)
-            res.send(500)
-        })
-}

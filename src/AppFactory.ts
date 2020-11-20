@@ -4,7 +4,7 @@ import passport from './passport'
 
 import indexRouter from "./router/indexRouter";
 import authRouter from "./router/authRouter";
-import userRouter from "./router/userRouter";
+import ajaxRouter from './router/ajaxRouter';
 
 export default class AppFactory {
 
@@ -32,7 +32,7 @@ export default class AppFactory {
     private static installRouters(app: Express) {
         app.use('/', indexRouter)
         app.use('/auth', authRouter)
-        app.use('/users', userRouter)
+        app.use('/ajax', ajaxRouter)
     }
 
     private static installFrontend(app: Express) {
