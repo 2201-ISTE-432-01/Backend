@@ -4,21 +4,32 @@
  */
 
 function validatePreferences() {
+    var formValid = True;
     var tempo_big_enough = (parseInt(document.getElementById('quantity').value) >= 50);
     var tempo_small_enough = (parseInt(document.getElementById('quantity').value) <= 250);
     var tempoValid = tempo_big_enough && tempo_small_enough
     if(!tempo_big_enough) {
-        alert('tempo is not fast enough')
-        return false;
+        M.toast({
+            html: 'Tempo is not fast enough!',
+            classes: 'errorToast',
+        })
+        formValid = False;
     }
     if(!tempo_small_enough){
-        alert('tempo is too fast');
-        return false;
+        M.toast({
+            html: 'Tempo is too fast!',
+            classes: 'errorToast',
+        })
+        formValid = False;
     }
 
     var artists = document.getElementById('myUL').getElementsByTagName("li");
     if(artists.length < 1) {
-        alert('you must input an artist')
+        M.toast({
+            html: 'Please select an artist!',
+            classes: 'errorToast',
+        })
+        formValid = False;
     }
     var i;
     for (i = 0; i < artists.length; i++) {
@@ -29,7 +40,11 @@ function validatePreferences() {
     }
     var genres = document.getElementById('myUL2').getElementsByTagName("li");
     if(genres.length < 1) {
-        alert('you must input an genre')
+        M.toast({
+            html: 'Please select a genre!',
+            classes: 'errorToast',
+        })
+        formValid = False;
     }
     var j;
     for (j = 0; j < genres.length; j++) {
@@ -39,7 +54,7 @@ function validatePreferences() {
         console.log(genre)
     }
 
-    return true;
+    return formValid;
 }
 
 /**
@@ -84,7 +99,6 @@ function addArtist() {
  */
 function addGenre() {
     const genre = $('#genreInput').val();
-
     if (!genre) {
         M.toast({
             html: 'Please select a genre!',
@@ -93,11 +107,24 @@ function addGenre() {
         return;
     }
 
+    // if ($('#genreList').children().map(it => it.text()).includes(`
+    //             ${genre}\u00D7
+    //     `)) {
+    //     M.toast({
+    //         html: 'You have already added that genre!',
+    //         classes: 'errorToast',
+    //     })
+    //     return;
+    // }
+
     $('#genreList').append(`
         <li>
             ${genre}<span class="close">\u00D7</span>
         </li>
     `);
+    console.log($('#genreList').children().map(it => it.text()))
+       
+    
 }
 
 

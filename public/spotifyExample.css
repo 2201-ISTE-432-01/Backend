@@ -45,24 +45,8 @@ ul li:nth-child(odd) {
 }/* Darker background-color on hover */
 ul li:hover {
   background: #ddd;
-}/* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}/* Add a "checked" mark when clicked on */
-ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}/* Style the close button */
+}
+/* Style the close button */
 .close {
   position: absolute;
   right: 0;
@@ -99,7 +83,7 @@ input {
   width: 25%;
   background: #D9D9D9;
   color: #555;
-  float: left;
+  float: right;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
@@ -126,4 +110,8 @@ input {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+#artistInput, .select-wrapper{
+  width: 70%;
 }
