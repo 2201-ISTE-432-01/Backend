@@ -27,8 +27,8 @@ block main
 
 					span.addBtn(onclick='addGenre()') Add
 				ul#genreList
-
-		input.btn.waves-effect.waves-light(id="generatePL" type='submit' value='Generate Playlist')
+		//- added onsubmit to add track
+		input.btn.waves-effect.waves-light(id="generatePL" type='submit' value='Generate Playlist' onsubmit='addTrack()')
 
 
 

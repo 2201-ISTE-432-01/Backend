@@ -4,7 +4,7 @@
  */
 
 function validatePreferences() {
-    var formValid = True;
+    var formValid = true;
     var tempo_big_enough = (parseInt(document.getElementById('quantity').value) >= 50);
     var tempo_small_enough = (parseInt(document.getElementById('quantity').value) <= 250);
     var tempoValid = tempo_big_enough && tempo_small_enough
@@ -13,23 +13,23 @@ function validatePreferences() {
             html: 'Tempo is not fast enough!',
             classes: 'errorToast',
         })
-        formValid = False;
+        formValid = false;
     }
     if(!tempo_small_enough){
         M.toast({
             html: 'Tempo is too fast!',
             classes: 'errorToast',
         })
-        formValid = False;
+        formValid = false;
     }
 
-    var artists = document.getElementById('myUL').getElementsByTagName("li");
+    var artists = document.getElementById('artistList').getElementsByTagName("li");
     if(artists.length < 1) {
         M.toast({
             html: 'Please select an artist!',
             classes: 'errorToast',
         })
-        formValid = False;
+        formValid = false;
     }
     var i;
     for (i = 0; i < artists.length; i++) {
@@ -38,13 +38,13 @@ function validatePreferences() {
         var artist = artists[i].innerHTML.slice(0, -28)
         console.log(artist)
     }
-    var genres = document.getElementById('myUL2').getElementsByTagName("li");
+    var genres = document.getElementById('genreList').getElementsByTagName("li");
     if(genres.length < 1) {
         M.toast({
             html: 'Please select a genre!',
             classes: 'errorToast',
         })
-        formValid = False;
+        formValid = false;
     }
     var j;
     for (j = 0; j < genres.length; j++) {
@@ -62,7 +62,7 @@ function validatePreferences() {
  */
 function addArtist() {
     const query = $('#artistInput').val();
-
+	
     if (!query) {
         M.toast({
             html: 'Please enter an artist name!',
@@ -79,17 +79,17 @@ function addArtist() {
             });
             return;
         }
-
+		
         const artist = res[0];
-
+		console.log(`${artist.id}`);
         // TODO: The ID should probably go into a hidden form input.
         $('#artistList').append(`
             <li>
                 <img src="${artist.images[0].url}" alt="${artist.name}" width="50px">
-                ${artist.name} (${artist.id})<span class="close">\u00D7</span>
+                ${artist.name} <p style="display:none;">(${artist.id})</p> <span class="close">\u00D7</span>
             </li>
         `);
-
+		console.log($('#artistInput'));
         $('#artistInput').val('')
     });
 }
@@ -128,6 +128,7 @@ function addGenre() {
 }
 
 
+
 window.addEventListener('load', () => {
     // load a list of genres from the backend, populate and setup our select.
 	$('#genreInput').append(`<option value="" disabled selected>Genre...</option>`)
@@ -152,4 +153,7 @@ window.addEventListener('load', () => {
             $('#artistInput').val(artist)
             addArtist()
         });
+	
+
 })
+

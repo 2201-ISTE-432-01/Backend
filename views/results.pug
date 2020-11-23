@@ -1,14 +1,19 @@
 extends layout/main
 block main
 	
+	script(type='text/javascript', src='/assets/js/ajax.js')
+	
 	#myDiv.header
 		h1 Song List: 
-		h4 (We will soon have a link to a spotify playlist here as well)
-		p As of right now, we have this hard coded to specific artists. We have a plan to make it based off of the user inputs. 
+		//h4 (We will soon have a link to a spotify playlist here as well)
+		//p As of right now, we have this hard coded to specific artists. We have a plan to make it based off of the user inputs. 
 	
 	#playlistDiv
-		ul
+		ul#playlistList
 			each val in recommendations.data.tracks
 				
 				li #{val.name}
 				li #{val.href}
+
+		ul#testlist
+			
