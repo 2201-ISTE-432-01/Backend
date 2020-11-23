@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS genre(
 );
 
 LOCK TABLES `genre` WRITE;
-INSERT INTO `gener` VALUES (1,'Pop'),(2,'Rap'),(3,'Hip-Hop');
+INSERT INTO `genre` VALUES (1,'Pop'),(2,'Rap'),(3,'Hip-Hop');
 UNLOCK TABLES;
 
 CREATE TABLE IF NOT EXISTS playlist(
