@@ -12,7 +12,6 @@ function getGenres(callback) {
     })
 }
 
-
 //get the songs
 function getTracks(artist, genre, track, tempo, callback) {
 	$.ajax({
